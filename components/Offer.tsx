@@ -28,7 +28,7 @@ export function Offer() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_1fr]">
           {/* Pricing card */}
-          <article className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white p-8 shadow-lift md:p-10">
+          <article className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white p-6 shadow-lift sm:p-8 md:p-10">
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-water-100/60 blur-2xl" />
             <p className="relative text-sm font-semibold uppercase tracking-[0.18em] text-water-700">
               WaterLine for plumbers
@@ -82,7 +82,7 @@ export function Offer() {
           {/* Guarantee card */}
           <article
             id="guarantee"
-            className="relative overflow-hidden rounded-3xl border border-leaf-500/25 bg-gradient-to-br from-leaf-500/[0.08] to-paper p-8 shadow-card md:p-10"
+            className="relative overflow-hidden rounded-3xl border border-leaf-500/25 bg-gradient-to-br from-leaf-500/[0.08] to-paper p-6 shadow-card sm:p-8 md:p-10"
           >
             <div className="flex items-center gap-3">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-leaf-500 text-white">

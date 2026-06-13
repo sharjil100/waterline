@@ -1,28 +1,26 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { DollarIcon, PhoneIcon, ShieldIcon, WrenchIcon } from "./Icons";
+import { PhoneIcon, ShieldIcon, WrenchIcon } from "./Icons";
 
 const WATERLINE_COST = 399; // every 4 weeks
-const DAYS_PER_MONTH = 30; // tunable: how many days a month we count calls over
 
 const formatMoney = (n: number) =>
   "$" + Math.round(n).toLocaleString("en-US");
 
 export function Calculator() {
-  const [callsPerDay, setCallsPerDay] = useState(8);
-  const [pctMissed, setPctMissed] = useState(20); // %
+  const [callsPerMonth, setCallsPerMonth] = useState(16);
   const [avgJob, setAvgJob] = useState(400);
 
   const { missedPerMonth, perWeek, perMonth, perYear, coversBy } =
     useMemo(() => {
-      const missedPerMonth = callsPerDay * DAYS_PER_MONTH * (pctMissed / 100);
+      const missedPerMonth = callsPerMonth;
       const perMonth = missedPerMonth * avgJob;
       const perWeek = perMonth / 4.3;
       const perYear = perMonth * 12;
       const coversBy = perMonth / WATERLINE_COST;
       return { missedPerMonth, perWeek, perMonth, perYear, coversBy };
-    }, [callsPerDay, pctMissed, avgJob]);
+    }, [callsPerMonth, avgJob]);
 
   return (
     <section id="calculator" className="relative bg-paper py-20 md:py-28">
@@ -37,9 +35,9 @@ export function Calculator() {
             See what missed calls are really costing you.
           </h2>
           <p className="mt-5 max-w-prose text-lg text-ink-muted">
-            Three sliders &mdash; calls a day, how many you miss, your average
-            job. See what voicemail is quietly costing you every month, then
-            let us run it on your real calls.
+            Two sliders &mdash; missed calls a month and your average job. See
+            what voicemail is quietly costing you every month, then let us run
+            it on your real calls.
           </p>
         </div>
 
@@ -51,27 +49,15 @@ export function Calculator() {
             </p>
 
             <Slider
-              label="Calls per day"
-              hint="Roughly how many calls come into your business line on a normal day."
-              min={0}
-              max={30}
-              step={1}
-              value={callsPerDay}
-              onChange={setCallsPerDay}
-              display={`${callsPerDay} ${callsPerDay === 1 ? "call" : "calls"}`}
-              icon={<PhoneIcon className="h-4 w-4 text-water-700" />}
-            />
-
-            <Slider
-              label="% you miss"
-              hint="The share that hits voicemail because you couldn't grab the phone."
-              min={0}
+              label="Calls per month"
+              hint="Roughly how many calls a month hit voicemail because you couldn't grab the phone."
+              min={10}
               max={60}
               step={1}
-              value={pctMissed}
-              onChange={setPctMissed}
-              display={`${pctMissed}%`}
-              icon={<DollarIcon className="h-4 w-4 text-water-700" />}
+              value={callsPerMonth}
+              onChange={setCallsPerMonth}
+              display={`${callsPerMonth} ${callsPerMonth === 1 ? "call" : "calls"}`}
+              icon={<PhoneIcon className="h-4 w-4 text-water-700" />}
             />
 
             <Slider
@@ -89,14 +75,26 @@ export function Calculator() {
             <button
               type="button"
               onClick={() => {
-                setCallsPerDay(8);
-                setPctMissed(20);
+                setCallsPerMonth(16);
                 setAvgJob(400);
               }}
               className="mt-6 text-xs font-medium text-ink-muted underline-offset-4 hover:text-ink hover:underline"
             >
               Reset to defaults
             </button>
+
+            <div className="mt-7 rounded-2xl border border-rust-400/25 bg-rust-400/[0.06] p-5">
+              <p className="flex items-center gap-2 text-sm font-semibold text-ink">
+                <ShieldIcon className="h-4 w-4 text-rust-500" />
+                Most plumbers lowball this
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                You only remember the calls you saw ring. The ones that hit
+                voicemail while you were under a sink never show up. Even at{" "}
+                <span className="font-semibold text-ink">10 a month</span>, the
+                number above is almost always too low &mdash; not too high.
+              </p>
+            </div>
           </div>
 
           {/* Results */}
@@ -115,7 +113,7 @@ export function Calculator() {
               </p>
 
               <div className="mt-3 flex items-end gap-3">
-                <span className="font-display text-6xl font-semibold leading-none text-paper md:text-7xl">
+                <span className="font-display text-5xl font-semibold leading-none text-paper sm:text-6xl md:text-7xl">
                   {formatMoney(perMonth)}
                 </span>
                 <span className="pb-2 text-sm text-paper/70">/ month</span>
@@ -128,7 +126,7 @@ export function Calculator() {
                 slipping to the next plumber on Google.
               </p>
 
-              <dl className="mt-7 grid grid-cols-3 gap-3">
+              <dl className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <Stat label="Per week" value={formatMoney(perWeek)} />
                 <Stat label="Per year" value={formatMoney(perYear)} highlight />
                 <Stat

@@ -80,7 +80,7 @@ export function BuiltForPlumbers() {
             If not, we adjust and ship a fix.
           </p>
           <a
-            href="#fast-start"
+            href="#cta"
             className="btn-primary shrink-0"
           >
             See It on Your Own Line

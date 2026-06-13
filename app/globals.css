@@ -10,6 +10,9 @@
   html {
     scroll-behavior: smooth;
   }
+  html, body {
+    overflow-x: clip;
+  }
   body {
     @apply bg-paper text-ink font-sans antialiased;
     font-feature-settings: "ss01", "cv11";
@@ -27,7 +30,7 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
   }
 
   .eyebrow {

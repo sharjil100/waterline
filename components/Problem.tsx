@@ -74,7 +74,7 @@ export function Problem() {
         </div>
 
         {/* Math */}
-        <div className="mt-14 overflow-hidden rounded-3xl border border-ink/8 bg-ink p-8 text-paper shadow-lift md:p-12">
+        <div className="mt-14 overflow-hidden rounded-3xl border border-ink/8 bg-ink p-6 text-paper shadow-lift sm:p-8 md:p-12">
           <div className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-end">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-water-200">
@@ -90,7 +90,7 @@ export function Problem() {
               </p>
             </div>
 
-            <dl className="grid grid-cols-3 gap-3 rounded-2xl bg-white/5 p-4 text-center">
+            <dl className="grid grid-cols-1 gap-3 rounded-2xl bg-white/5 p-4 text-center sm:grid-cols-3">
               <Metric value="~$1,800" label="Emergency call" />
               <Metric value="~$4,500" label="Repipe" highlight />
               <Metric value="$0" label="Voicemail left" />

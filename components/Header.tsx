@@ -18,13 +18,47 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#05080e]/95 backdrop-blur">
       <div className="container-page flex h-20 items-center justify-between">
+        {/* Hamburger (mobile only, left) */}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/12 text-paper transition hover:border-white/30 md:hidden"
+        >
+          {open ? (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+              <path
+                d="m6 6 12 12M18 6 6 18"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+              <path
+                d="M4 7h16M4 12h16M4 17h16"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
+        </button>
+
+        {/* Logo + wordmark (desktop only) */}
         <Link
           href="/"
           aria-label="WaterLine home"
-          className="flex items-center"
+          className="hidden items-center md:flex"
           onClick={() => setOpen(false)}
         >
-          <Logo />
+          <Logo size="lg" />
+          <span className="-ml-1.5 font-brand text-2xl font-bold tracking-tight text-paper/80">
+            WaterLine
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -40,40 +74,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <a href="#cta" className="btn-primary !py-2.5 !text-sm">
-            Get my Leak Check
-          </a>
-          {/* Hamburger (mobile only) */}
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/12 text-paper transition hover:border-white/30 md:hidden"
-          >
-            {open ? (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
-                <path
-                  d="m6 6 12 12M18 6 6 18"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            )}
-          </button>
-        </div>
+        <a
+          href="#cta"
+          className={`btn-primary !py-2.5 !text-sm ${
+            open ? "hidden md:inline-flex" : ""
+          }`}
+        >
+          Get my Leak Check
+        </a>
       </div>
 
       {/* Mobile menu */}

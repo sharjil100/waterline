@@ -126,9 +126,9 @@ export function Footer() {
       {/* Oversized wordmark, cut off behind the card */}
       <div
         aria-hidden
-        className="pointer-events-none relative z-0 -mt-10 flex h-[14vw] items-start justify-center overflow-hidden md:-mt-16"
+        className="pointer-events-none relative z-0 -mt-14 flex h-[14vw] items-start justify-center overflow-hidden md:-mt-20"
       >
-        <span className="select-none whitespace-nowrap font-display text-[24vw] font-black leading-none tracking-tight text-white/[0.05]">
+        <span className="select-none whitespace-nowrap font-display text-[21vw] font-black leading-none tracking-tight text-white/[0.05]">
           WaterLine
         </span>
       </div>

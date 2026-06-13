@@ -12,11 +12,10 @@ export function Hero() {
             <span className="h-1.5 w-1.5 rounded-full bg-rust-500" />
             24/7 Missed-Call Rescue System for plumbers
           </span>
-          <h1 className="mt-5 font-display text-[2.6rem] font-black leading-[1.05] tracking-tight text-ink sm:text-5xl md:text-[3.5rem]">
-            Plumbers: Stop donating emergency jobs to the{" "}
-            <span className="relative whitespace-nowrap">
-              <span className="relative z-10">next guy on Google.</span>
-              <span className="absolute bottom-1 left-0 right-0 z-0 h-3 bg-rust-400/50" />
+          <h1 className="mt-5 text-balance font-display text-[2.15rem] font-black leading-[1.08] tracking-tight text-ink sm:text-5xl md:text-[3.25rem]">
+            Plumbers: Stop donating emergency jobs to{" "}
+            <span className="[text-decoration-line:underline] [text-decoration-color:#F1A24A80] [text-decoration-thickness:0.5em] [text-underline-offset:-0.12em] [-webkit-box-decoration-break:clone] [box-decoration-break:clone]">
+              the next guy on Google.
             </span>
           </h1>
           <p className="mt-6 max-w-prose text-lg leading-relaxed text-ink-muted">
@@ -82,7 +81,7 @@ function HeroVisual() {
         {/* Real photo: the call coming in mid-job */}
         <div className="overflow-hidden rounded-2xl border border-ink/10 shadow-card">
           <Image
-            src="/images/hero/hero-img.png"
+            src="/images/hero/hero2-img.png"
             alt="A plumber working under a kitchen sink as a call lights up his phone on the cabinet floor"
             width={1254}
             height={1254}
